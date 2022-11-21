@@ -45,6 +45,11 @@ public class Curso {
     public void setCicloLleva(int cicloLleva) {
         this.cicloLleva = cicloLleva;
     }
+
+    @Override
+    public String toString() {
+        return "Curso{" + "codigo=" + codigo + ", horasCurso=" + horasCurso + ", cantidadAlumnos=" + cantidadAlumnos + ", cicloLleva=" + cicloLleva + '}';
+    }
     
     
 }
