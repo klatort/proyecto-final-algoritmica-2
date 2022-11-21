@@ -3,25 +3,19 @@ package Modelo;
 
 public class Alumno extends Persona{
     
-    private int sueldo;
+    private int ciclo;
 
-    public Alumno(int sueldo, String codigoInterno, String nombre) {
+    public Alumno(int ciclo, String codigoInterno, String nombre) {
         super(codigoInterno, nombre);
-        this.sueldo = sueldo;
+        this.ciclo = ciclo;
     }
 
     public int getSueldo() {
-        return sueldo;
+        return ciclo;
     }
 
-    public void setSueldo(int sueldo) {
-        this.sueldo = sueldo;
+    public void setSueldo(int ciclo) {
+        this.ciclo = ciclo;
     }
-
-    @Override
-    public String toString() {
-        return super.toString()+"Alumno{" + "sueldo=" + sueldo + '}';
-    }
-    
     
 }
