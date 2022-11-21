@@ -3,13 +3,15 @@ package Modelo;
 
 public abstract class Persona {
     
-    String codigoInterno;
-    String nombre;
+    protected String codigoInterno;
+    protected String nombre;
 
     public Persona(String codigoInterno, String nombre) {
         this.codigoInterno = codigoInterno;
         this.nombre = nombre;
     }
+
+
 
     public String getCodigoInterno() {
         return codigoInterno;
