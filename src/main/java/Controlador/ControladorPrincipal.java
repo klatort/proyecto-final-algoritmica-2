@@ -9,6 +9,7 @@ import java.awt.event.*;
 import Vista.frmPrincipal;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
+import java.util.Vector;
 /**
  *
  * @author Fabo
@@ -17,26 +18,38 @@ public class ControladorPrincipal {
     private frmPrincipal vista;
     
     public ControladorPrincipal(frmPrincipal vista){
-                
+        
+        
+        //DATA TEMPORAL SE BORRARÁ CUANDO HAYA UNA BD//
         Horario horario1 = new Horario(18, 21, "Viernes");
         Horario horario2 = new Horario(14, 16, "Sábado");
         
-        Horario[] horarioProfesor = { horario1, horario2 };
+        Vector<Horario> horarioProfesor = new Vector();
+        horarioProfesor.add(horario1);
+        horarioProfesor.add(horario2);
                 
-        Profesor profesor1 = new Profesor( horarioProfesor, 10, "uncódigo", "Chumacero Calle");
-        Profesor[] profesores = { profesor1 };
+        Profesor profesor1 = new Profesor(10, false, "uncódigo", "Chumacero Calle", horarioProfesor);
+        Vector<Profesor> profesores = new Vector();
+        profesores.add(profesor1);
                 
-        Curso algoritmicaII = new Curso(profesores, "202W0401", "Algorítmica II", 6, 40, 4);
-        Curso procesosSoftware = new Curso(profesores,"202W0406", "Procesos de software", 4, 40, 4);
+        Curso algoritmicaII = new Curso("202W0401", "Algorítmica II", 6, 40, 4, profesores);
+        Curso procesosSoftware = new Curso("202W0406", "Procesos de software", 4, 40, 4, profesores);
         
-        Curso[] cursos = { algoritmicaII, procesosSoftware };
-     
+        Vector<Curso> cursos = new Vector();
+        cursos.add(algoritmicaII);
+        cursos.add(procesosSoftware);
+        
         PlanCurricular plan2017 = new PlanCurricular("2017", cursos);
-        PlanCurricular[] curriculasSoftware = { plan2017 };
+        Vector<PlanCurricular> curriculaSoftware = new Vector();
+        curriculaSoftware.add(plan2017);
         
-        EscuelaProfesional EscuelaSoftware = new EscuelaProfesional("Ingeniería de Software", curriculasSoftware);
+        EscuelaProfesional EscuelaSoftware = new EscuelaProfesional("Ingeniería de Software", curriculaSoftware);
 
-        PlanteoHorarioCurso horarioCurso = new PlanteoHorarioCurso(profesor1);
+        PlanteoHorarioCurso horarioCurso = new PlanteoHorarioCurso();
+        
+        
+        
+        //CONFIGURANDO PUNTOS QUE SOLO ES POSIBLE POR CÓDIGO//
         
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment( SwingConstants.CENTER );
@@ -55,6 +68,8 @@ public class ControladorPrincipal {
                    vista.panelMostrarHorario.show(false);
             }
         });
+        
+        ////////////////////////////////////////////
         
         this.vista = vista;
     }
