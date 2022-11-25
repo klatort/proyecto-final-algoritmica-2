@@ -11,8 +11,6 @@ public abstract class Persona {
         this.nombre = nombre;
     }
 
-
-
     public String getCodigoInterno() {
         return codigoInterno;
     }

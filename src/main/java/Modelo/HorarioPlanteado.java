@@ -6,8 +6,9 @@ package Modelo;
 
 /**
  *
- * @author Usuario
+ * @author Fabo
  */
-public class ArregloAlumnos {
-    
+public class HorarioPlanteado {
+    public Horario horario;
+    public String profesor;
 }

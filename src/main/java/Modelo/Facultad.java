@@ -4,10 +4,14 @@
  */
 package Modelo;
 
+import java.util.Vector;
+
 /**
  *
  * @author Fabo
  */
-public class ArregloProfesores {
+public class Facultad {
+    private Vector<Profesor> profesores;
+    private Vector<EscuelaProfesional> carreras;
     
 }

@@ -4,28 +4,21 @@
  */
 package Modelo;
 
+import java.util.Vector;
 /**
  *
  * @author Usuario
  */
 public class EscuelaProfesional {
-    private String nombre;
-    private PlanCurricular [] mallas;
-    private ArregloAlumnos alumnos;
-
-    public EscuelaProfesional(String nombre, PlanCurricular[] mallas) {
-        this.nombre = nombre;
-        this.mallas = mallas;
-    }
-
-    public PlanCurricular[] getMallas() {
-        return mallas;
-    }
-
-    public void setMallas(PlanCurricular[] mallas) {
-        this.mallas = mallas;
-    }
     
+    private Vector<PlanCurricular> mallas;
+    private String nombre;
+
+    public EscuelaProfesional(String nombre, Vector<PlanCurricular> mallas) {
+        this.mallas = mallas;
+        this.nombre = nombre;
+    }
+
     public boolean agregar(){
         return false;
          
@@ -33,11 +26,6 @@ public class EscuelaProfesional {
     public boolean eliminar(){
         return false;
          
-    }
-
-    @Override
-    public String toString() {
-        return "EscuelaProfesional{" + "nombre=" + nombre + ", mallas=" + mallas + ", alumnos=" + alumnos + '}';
     }
     
 }

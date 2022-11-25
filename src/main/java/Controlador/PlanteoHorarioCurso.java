@@ -15,21 +15,26 @@ import java.util.Vector;
  * @author Usuario
  */
 public class PlanteoHorarioCurso {
-    private Map<String, HorarioPlanteado[]> horariosCursos;
+    private Map<String, Vector<HorarioPlanteado>> horariosCursos;
     
     public PlanteoHorarioCurso(){
         this.horariosCursos = new HashMap<>();
     }
     public boolean plantearHorarios(Vector<Curso> cursos){
-        Map<Curso, Profesor> profesores = new HashMap<>();
+        Map<Profesor, Integer> profesores = new HashMap<>();
         Map<Integer, Vector<Curso>> cursosCiclo = new HashMap<>();
         
         for(var i : cursos){
             for(var j : i.getProfesDictan()){
-                if(profesores.containsValue(j))
-                    profesores.put(i, j);
+                if(profesores.computeIfPresent(j, (k,v)-> v + 1) == null){
+                    profesores.put(j, 1);
+                }
             }
         }
+        
+        System.out.println(profesores);
+        
+        
         for(int i = 1; i <= 10; i++){
             cursosCiclo.computeIfAbsent(i, ignored -> new Vector());
         }
@@ -37,11 +42,14 @@ public class PlanteoHorarioCurso {
             var aux = cursosCiclo.get(it.getCicloLleva());
             aux.add(it);
         }
+        
         float promedioProfesores = profesores.size() / cursos.size();
         
         for(int i = 1; i <= 10; i++){
             var aux = cursosCiclo.get(i);
-            
+            for(var it : aux){
+                
+            }
         }
         
         return true;

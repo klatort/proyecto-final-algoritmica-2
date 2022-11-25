@@ -28,12 +28,17 @@ public class ControladorPrincipal {
         horarioProfesor.add(horario1);
         horarioProfesor.add(horario2);
                 
-        Profesor profesor1 = new Profesor(10, false, "uncódigo", "Chumacero Calle", horarioProfesor);
-        Vector<Profesor> profesores = new Vector();
-        profesores.add(profesor1);
+        Profesor profesor1 = new Profesor("Auxiliar", "uncódigo", "Chumacero Calle", horarioProfesor);
+        Profesor profesor2 = new Profesor("Principal", "uncódigo", "Suiberto Laguna", horarioProfesor);
+        Vector<Profesor> profesoresA = new Vector();
+        profesoresA.add(profesor1);
+        profesoresA.add(profesor2);
+        
+        Vector<Profesor> profesoresB = new Vector();
+        profesoresB.add(profesor2);
                 
-        Curso algoritmicaII = new Curso("202W0401", "Algorítmica II", 6, 40, 4, profesores);
-        Curso procesosSoftware = new Curso("202W0406", "Procesos de software", 4, 40, 4, profesores);
+        Curso algoritmicaII = new Curso("202W0401", "Algorítmica II", 6, 4, profesoresA);
+        Curso procesosSoftware = new Curso("202W0406", "Procesos de software", 4, 4, profesoresB);
         
         Vector<Curso> cursos = new Vector();
         cursos.add(algoritmicaII);
@@ -45,7 +50,7 @@ public class ControladorPrincipal {
         
         EscuelaProfesional EscuelaSoftware = new EscuelaProfesional("Ingeniería de Software", curriculaSoftware);
 
-        PlanteoHorarioCurso horarioCurso = new PlanteoHorarioCurso();
+        //PlanteoHorarioCurso horarioCurso = new PlanteoHorarioCurso();
         
         
         
@@ -70,6 +75,9 @@ public class ControladorPrincipal {
         });
         
         ////////////////////////////////////////////
+        
+        PlanteoHorarioCurso test = new PlanteoHorarioCurso();
+        test.plantearHorarios(cursos);
         
         this.vista = vista;
     }

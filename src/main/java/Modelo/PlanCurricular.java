@@ -4,15 +4,16 @@
  */
 package Modelo;
 
+import java.util.Vector;
 /**
  *
  * @author Usuario
  */
 public class PlanCurricular {
+    private Vector<Curso> cursos;
     private String anio;
-    private Curso[] cursos;
 
-    public PlanCurricular(String anio, Curso[] cursos) {
+    public PlanCurricular(String anio, Vector<Curso> cursos) {
         this.anio = anio;
         this.cursos = cursos;
     }
