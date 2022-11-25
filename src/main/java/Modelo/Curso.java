@@ -2,13 +2,17 @@
 package Modelo;
 
 public class Curso {
+    private Profesor[] profesDictan;
     private String codigo;
-    private float horasCurso;
+    private String nombreCurso;
+    private int horasCurso;
     private int cantidadAlumnos;
     private int cicloLleva;
 
-    public Curso(String codigo, float horasCurso, int cantidadAlumnos, int cicloLleva) {
+    public Curso(Profesor[] profesDictan, String codigo, String nombreCurso, int horasCurso, int cantidadAlumnos, int cicloLleva) {
+        this.profesDictan = profesDictan;
         this.codigo = codigo;
+        this.nombreCurso = nombreCurso;
         this.horasCurso = horasCurso;
         this.cantidadAlumnos = cantidadAlumnos;
         this.cicloLleva = cicloLleva;
@@ -22,11 +26,11 @@ public class Curso {
         this.codigo = codigo;
     }
 
-    public float getHorasCurso() {
+    public int getHorasCurso() {
         return horasCurso;
     }
 
-    public void setHorasCurso(float horasCurso) {
+    public void setHorasCurso(int horasCurso) {
         this.horasCurso = horasCurso;
     }
 

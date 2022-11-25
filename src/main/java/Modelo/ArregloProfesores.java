@@ -6,16 +6,8 @@ package Modelo;
 
 /**
  *
- * @author Usuario
+ * @author Fabo
  */
-public class PlanCurricular {
-    private String anio;
-    private Curso[] cursos;
-
-    public PlanCurricular(String anio, Curso[] cursos) {
-        this.anio = anio;
-        this.cursos = cursos;
-    }
-    
+public class ArregloProfesores {
     
 }

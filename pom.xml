@@ -16,6 +16,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>15</maven.compiler.source>
         <maven.compiler.target>15</maven.compiler.target>
-        <exec.mainClass>proyectoalgoritmicaii.ProyectoAlgoritmicaII</exec.mainClass>
+        <exec.mainClass>Vista.App</exec.mainClass>
     </properties>
 </project>

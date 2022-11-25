@@ -3,14 +3,12 @@ package Modelo;
 
 public class Profesor extends Persona{
     private Horario [] disponibilidad;
-    private float horasElectivas;
-    private Curso[] cursosPreferencia;
+    private int horasElectivas;
 
-    public Profesor(Horario[] disponibilidad, float horasElectivas, Curso[] cursosPreferencia, String codigoInterno, String nombre) {
+    public Profesor(Horario[] disponibilidad, int horasElectivas, String codigoInterno, String nombre) {
         super(codigoInterno, nombre);
         this.disponibilidad = disponibilidad;
         this.horasElectivas = horasElectivas;
-        this.cursosPreferencia = cursosPreferencia;
     }
 
     public Horario[] getDisponibilidad() {
@@ -21,25 +19,17 @@ public class Profesor extends Persona{
         this.disponibilidad = disponibilidad;
     }
 
-    public float getHorasElectivas() {
+    public int getHorasElectivas() {
         return horasElectivas;
     }
 
-    public void setHorasElectivas(float horasElectivas) {
+    public void setHorasElectivas(int horasElectivas) {
         this.horasElectivas = horasElectivas;
-    }
-
-    public Curso[] getCursosPreferencia() {
-        return cursosPreferencia;
-    }
-
-    public void setCursosPreferencia(Curso[] cursosPreferencia) {
-        this.cursosPreferencia = cursosPreferencia;
     }
 
     @Override
     public String toString() {
-        return super.toString()+"Profesor{" + "disponibilidad=" + disponibilidad + ", horasElectivas=" + horasElectivas + ", cursosPreferencia=" + cursosPreferencia + '}';
+        return super.toString()+"Profesor{" + "disponibilidad=" + disponibilidad + ", horasElectivas=" + horasElectivas + '}';
     }
     
     

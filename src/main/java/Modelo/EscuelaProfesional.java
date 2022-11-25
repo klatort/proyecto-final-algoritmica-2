@@ -13,10 +13,9 @@ public class EscuelaProfesional {
     private PlanCurricular [] mallas;
     private ArregloAlumnos alumnos;
 
-    public EscuelaProfesional(String nombre, PlanCurricular[] mallas, ArregloAlumnos alumnos) {
+    public EscuelaProfesional(String nombre, PlanCurricular[] mallas) {
         this.nombre = nombre;
         this.mallas = mallas;
-        this.alumnos = alumnos;
     }
 
     public PlanCurricular[] getMallas() {

@@ -2,7 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Modelo;
+package Controlador;
+
+import Modelo.Horario;
+import Modelo.Profesor;
 
 /**
  *
@@ -12,9 +15,8 @@ public class PlanteoHorarioCurso {
     private Profesor profesorCurso;
     private Horario seDicta;
 
-    public PlanteoHorarioCurso(Profesor profesorCurso, Horario seDicta) {
+    public PlanteoHorarioCurso(Profesor profesorCurso) {
         this.profesorCurso = profesorCurso;
-        this.seDicta = seDicta;
     }
     
     public boolean generar_horario(){
