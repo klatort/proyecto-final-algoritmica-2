@@ -11,4 +11,9 @@ package Modelo;
 public class HorarioPlanteado {
     public Horario horario;
     public String profesor;
+
+    public HorarioPlanteado(Horario horario, String profesor) {
+        this.horario = horario;
+        this.profesor = profesor;
+    }
 }

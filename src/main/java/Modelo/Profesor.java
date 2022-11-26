@@ -12,7 +12,7 @@ public class Profesor extends Persona{
         super(codigoInterno, nombre);
         this.disponibilidad = disponibilidad;
         this.tipoDocente = tipoDocente;
-        this.horasFaltantes = 12;
+        this.horasFaltantes = 6;
     }
 
     public Vector<Horario> getDisponibilidad() {
@@ -44,7 +44,7 @@ public class Profesor extends Persona{
     }
     
    public boolean estaDisponible(){
-       if(this.horasFaltantes <= 0){
+       if(this.horasFaltantes > 0){
            return true;
        }
        return false;

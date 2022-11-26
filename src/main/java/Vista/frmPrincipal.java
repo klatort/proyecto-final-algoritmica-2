@@ -76,8 +76,10 @@ public class frmPrincipal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tableHorario.setRowSelectionAllowed(false);
         tableHorario.getTableHeader().setResizingAllowed(false);
         tableHorario.getTableHeader().setReorderingAllowed(false);
+        tableHorario.setUpdateSelectionOnSort(false);
         panelHorario.setViewportView(tableHorario);
         if (tableHorario.getColumnModel().getColumnCount() > 0) {
             tableHorario.getColumnModel().getColumn(0).setResizable(false);
@@ -128,7 +130,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addGap(27, 27, 27))
         );
 
-        panelMostrarCursos.setLayout(new java.awt.GridLayout());
+        panelMostrarCursos.setLayout(new java.awt.GridLayout(1, 0));
 
         javax.swing.GroupLayout panelCarreraPlanLayout = new javax.swing.GroupLayout(panelCarreraPlan);
         panelCarreraPlan.setLayout(panelCarreraPlanLayout);

@@ -11,7 +11,6 @@ import java.util.Vector;
  * @author Fabo
  */
 public class Facultad {
-    private Vector<Profesor> profesores;
     private Vector<EscuelaProfesional> carreras;
     
 }

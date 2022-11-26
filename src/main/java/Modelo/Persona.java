@@ -29,9 +29,6 @@ public abstract class Persona {
 
     @Override
     public String toString() {
-        return "codigoInterno=" + codigoInterno + ", nombre=" + nombre + '}';
+        return "nombre=" + nombre;
     }
-    
-    
-    
 }
