@@ -84,7 +84,7 @@ public class PlanteoHorarioCurso {
                     if(!cruce){
                         profesor.setHorasFaltantes(profesor.getHorasFaltantes() - curso.getHorasCurso());
                         horariosCursos.get(curso).add(planteo);
-                        System.out.println("Curso: " + curso.getNombreCurso() + " Profesor: " + planteo.profesor + " Horario: " + planteo.horario.getDiaSemana() + " De: " +planteo.horario.getInicio() + " a " + planteo.horario.getFin());
+                        System.out.println("Curso: " + curso.getNombreCurso() + " Profesor: " + planteo.profesor + " Horario: " + planteo.horario.getDiaSemana() + " De: " +planteo.horario.getInicio() + " a " + planteo.horario.getFin() + ".");
                         break;
                     }
                 }
