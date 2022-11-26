@@ -68,16 +68,17 @@ public class ControladorPrincipal {
             vista.tableHorario.getModel().setValueAt(Integer.toString(i + 8) + ":00", i, 0);
         }
         
-        vista.btnRegresar.addActionListener( new ActionListener(){
-            public void actionPerformed(ActionEvent ev){
-                   vista.panelMostrarHorario.show(false);
-            }
+        vista.btnRegresar.addActionListener((ActionEvent ev) -> {
+            vista.panelMostrarHorario.show(false);
         });
         
         ////////////////////////////////////////////
         
         PlanteoHorarioCurso test = new PlanteoHorarioCurso();
         test.plantearHorarios(cursos);
+        var aux = test.getHorariosCursos().get(test.getHorariosCursos().keySet().iterator().next());
+        System.out.println();
+        vista.lblCurso.setText(test.getHorariosCursos().keySet().iterator().next().getNombreCurso());
         
         this.vista = vista;
     }

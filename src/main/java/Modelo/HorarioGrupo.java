@@ -4,13 +4,16 @@
  */
 package Modelo;
 
-import java.util.Vector;
-
 /**
  *
  * @author Fabo
  */
-public class Facultad {
-    private Vector<EscuelaProfesional> carreras;
-    
+public class HorarioGrupo {
+    public Horario horario;
+    public String profesor;
+
+    public HorarioGrupo(Horario horario, String profesor) {
+        this.horario = horario;
+        this.profesor = profesor;
+    }
 }
