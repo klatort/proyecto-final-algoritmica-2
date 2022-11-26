@@ -8,11 +8,11 @@ package Modelo;
  *
  * @author Fabo
  */
-public class HorarioPlanteado {
+public class HorarioGrupo {
     public Horario horario;
     public String profesor;
 
-    public HorarioPlanteado(Horario horario, String profesor) {
+    public HorarioGrupo(Horario horario, String profesor) {
         this.horario = horario;
         this.profesor = profesor;
     }

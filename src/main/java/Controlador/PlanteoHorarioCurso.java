@@ -17,13 +17,13 @@ import java.util.Vector;
  * @author Usuario
  */
 public class PlanteoHorarioCurso {
-    private Map<Curso, Vector<HorarioPlanteado>> horariosCursos;
+    private Map<Curso, Vector<HorarioGrupo>> horariosCursos;
     
     public PlanteoHorarioCurso(){
         this.horariosCursos = new HashMap<>();
     }
 
-    public Map<Curso, Vector<HorarioPlanteado>> getHorariosCursos() {
+    public Map<Curso, Vector<HorarioGrupo>> getHorariosCursos() {
         return this.horariosCursos;
     }
     
@@ -84,7 +84,7 @@ public class PlanteoHorarioCurso {
                     if(!cruce){
                         profesor.setHorasFaltantes(profesor.getHorasFaltantes() - curso.getHorasCurso());
                         horariosCursos.get(curso).add(planteo);
-                        System.out.println("Curso: " + curso.getNombreCurso() + " Profesor: " + planteo.profesor + "Horario: " + planteo.horario.getDiaSemana() + " De: " +planteo.horario.getInicio() + " a " + planteo.horario.getFin());
+                        System.out.println("Curso: " + curso.getNombreCurso() + " Profesor: " + planteo.profesor + " Horario: " + planteo.horario.getDiaSemana() + " De: " +planteo.horario.getInicio() + " a " + planteo.horario.getFin());
                         break;
                     }
                 }
@@ -94,13 +94,13 @@ public class PlanteoHorarioCurso {
         return true;
     }
     
-    private HorarioPlanteado plantearHorarios(Profesor profesor, Curso curso, int it){
+    private HorarioGrupo plantearHorarios(Profesor profesor, Curso curso, int it){
         
         //USAR CICLO COMO CRITERIO PARA DETERMINAR CRUCE DE HORARIO, ES DECIR
         //CURSO A, B Y A.CICLO == B.CICLO -> A.HORARIO != B.CICLO
         
         if(profesor.estaDisponible() && profesor.getHorasFaltantes() - curso.getHorasCurso() >= 0){
-            HorarioPlanteado aux = new HorarioPlanteado(profesor.getDisponibilidad().get(it), profesor.getNombre());
+            HorarioGrupo aux = new HorarioGrupo(profesor.getDisponibilidad().get(it), profesor.getNombre());
             return aux;
         }
         return null;
