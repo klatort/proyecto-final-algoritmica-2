@@ -3,19 +3,22 @@ package Modelo;
 
 import java.util.Vector;
 
-public class Profesor extends Persona{
+public class Profesor{
+    protected String codigoInterno;
+    protected String nombre;
     private String tipoDocente;
     private int horasFaltantes;
-    private Vector<Horario> disponibilidad;
+    private Horario[] disponibilidad;
     
-    public Profesor(String tipoDocente, String codigoInterno, String nombre, Vector<Horario> disponibilidad) {
-        super(codigoInterno, nombre);
-        this.disponibilidad = disponibilidad;
+    public Profesor(String tipoDocente, String codigoInterno, String nombre) {
+        this.codigoInterno = codigoInterno;
+        this.nombre = nombre;
+        this.disponibilidad = new Horario[0];
         this.tipoDocente = tipoDocente;
         this.horasFaltantes = 6;
     }
 
-    public Vector<Horario> getDisponibilidad() {
+    public Horario[] getDisponibilidad() {
         return disponibilidad;
     }
 
@@ -34,11 +37,7 @@ public class Profesor extends Persona{
     public String getNombre() {
         return nombre;
     }
-
-    public void setDisponibilidad(Vector<Horario> disponibilidad) {
-        this.disponibilidad = disponibilidad;
-    }
-
+    
     public void setHorasFaltantes(int horasFaltantes) {
         this.horasFaltantes = horasFaltantes;
     }

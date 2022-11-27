@@ -5,11 +5,11 @@ import java.util.Vector;
 
 public class EscuelaProfesional {
     
-    private Vector<PlanCurricular> mallas;
+    private PlanCurricular[] mallas;
     private String nombre;
 
-    public EscuelaProfesional(String nombre, Vector<PlanCurricular> mallas) {
-        this.mallas = mallas;
+    public EscuelaProfesional(String nombre) {
+        this.mallas = new PlanCurricular[0];
         this.nombre = nombre;
     }
 

@@ -60,12 +60,12 @@ public class PlanteoHorarioCurso {
         }
         
         Collections.sort(cursos, Comparator.comparing(e -> {
-            return e.getProfesDictan().size();
+            return e.getProfesDictan().length;
         }));
         
         for(var curso : cursos){
             for(var profesor : curso.getProfesDictan()){
-                for(int cont = 0; cont < profesor.getDisponibilidad().size(); cont++){
+                for(int cont = 0; cont < profesor.getDisponibilidad().length; cont++){
                     var planteo = plantearHorarios(profesor, curso, cont);
                     if(planteo == null) break;
                     var c = cursosCiclo.get(curso.getCicloLleva());
@@ -100,7 +100,7 @@ public class PlanteoHorarioCurso {
         //CURSO A, B Y A.CICLO == B.CICLO -> A.HORARIO != B.CICLO
         
         if(profesor.estaDisponible() && profesor.getHorasFaltantes() - curso.getHorasCurso() >= 0){
-            HorarioGrupo aux = new HorarioGrupo(profesor.getDisponibilidad().get(it), profesor.getNombre());
+            HorarioGrupo aux = new HorarioGrupo(profesor.getDisponibilidad()[it], profesor.getNombre());
             return aux;
         }
         return null;

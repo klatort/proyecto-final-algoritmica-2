@@ -4,21 +4,21 @@ package Modelo;
 import java.util.Vector;
 
 public class Curso {
-    private Vector<Profesor> profesDictan;
+    private Profesor[] profesDictan;
     private String codigo;
     private String nombreCurso;
     private int horasCurso;
     private int cicloLleva;
 
-    public Curso(String codigo, String nombreCurso, int horasCurso, int cicloLleva, Vector<Profesor> profesDictan) {
-        this.profesDictan = profesDictan;
+    public Curso(String codigo, String nombreCurso, int horasCurso, int cicloLleva) {
+        this.profesDictan = new Profesor[0];
         this.codigo = codigo;
         this.nombreCurso = nombreCurso;
         this.horasCurso = horasCurso;
         this.cicloLleva = cicloLleva;
     }
     
-    public Vector<Profesor> getProfesDictan() {
+    public Profesor[] getProfesDictan() {
         return profesDictan;
     }
 
@@ -29,16 +29,8 @@ public class Curso {
     public String getCodigo() {
         return codigo;
     }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
+    
     public int getHorasCurso() {
         return horasCurso;
-    }
-
-    public int getCicloLleva() {
-        return cicloLleva;
     }
 }

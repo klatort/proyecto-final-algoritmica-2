@@ -24,20 +24,20 @@ public class HorariosCurso {
        return true;
     }
     
-    public int find(HorarioGrupo e)
+    public HorarioGrupo get(HorarioGrupo e)
     {
         int len = this.grupos.length;
         int i = 0;
         
         while (i < len) {
             if (this.grupos[i] == e) {
-                return i;
+                return this.grupos[i];
             }
             else {
                 i = i + 1;
             }
         }
-        return -1;
+        return null;
     }
     
     public boolean removeTheElement(HorarioGrupo e)
