@@ -4,16 +4,18 @@ package Modelo;
 import java.util.Vector;
 
 public class Profesor{
-    protected String codigoInterno;
-    protected String nombre;
+    private String nombre;
+    private String codigoInterno;
     private String tipoDocente;
+    private String[] cursosPreferencia;
     private int horasFaltantes;
     private Horario[] disponibilidad;
     
-    public Profesor(String tipoDocente, String codigoInterno, String nombre) {
+    public Profesor(String tipoDocente, String codigoInterno, String nombre, String[] cursosPreferencia) {
         this.codigoInterno = codigoInterno;
         this.nombre = nombre;
         this.disponibilidad = new Horario[0];
+        this.cursosPreferencia = cursosPreferencia;
         this.tipoDocente = tipoDocente;
         this.horasFaltantes = 6;
     }
