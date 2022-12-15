@@ -11,11 +11,16 @@ public class PlanCurricular {
         this.anio = anio;
         this.cursos = new Curso[0];
     }
+
+    public Curso[] getCursos() {
+        return this.cursos;
+    }
     
     public boolean addCurso(Curso e){
        var aux = new Curso[this.cursos.length + 1];
        System.arraycopy(this.cursos, 0, aux, 0, this.cursos.length);
        aux[this.cursos.length] = e;
+       this.cursos = aux;
        return true;
     }
     
@@ -35,7 +40,7 @@ public class PlanCurricular {
         return false;
     }
     
-    public boolean removeTheElement(Curso e)
+    public boolean removeCurso(Curso e)
     {
         var aux = new Curso[this.cursos.length - 1];
         for (int i = 0, k = 0; i < this.cursos.length; i++) {
@@ -46,5 +51,14 @@ public class PlanCurricular {
         }
         this.cursos = aux;        
         return true;
+    }
+
+    @Override
+    public String toString() {
+        String result = "";
+        for(var it : cursos){
+            result += it + " ";
+        }
+        return result;
     }
 }

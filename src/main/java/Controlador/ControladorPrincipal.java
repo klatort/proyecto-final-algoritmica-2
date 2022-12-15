@@ -9,7 +9,6 @@ import java.awt.event.*;
 import Vista.frmPrincipal;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
-import java.util.Vector;
 /**
  *
  * @author Fabo
@@ -24,31 +23,35 @@ public class ControladorPrincipal {
         Horario horario1 = new Horario(18, 21, "Viernes");
         Horario horario2 = new Horario(14, 16, "Sábado");
         
-        Vector<Horario> horarioProfesor = new Vector();
-        horarioProfesor.add(horario1);
-        horarioProfesor.add(horario2);
-                
+        Horario[] horarioProfesor = new Horario[2];
+        horarioProfesor[0]=horario1;
+        horarioProfesor[1]=horario2;
+        
         Profesor profesor1 = new Profesor("Auxiliar", "uncódigo", "Chumacero Calle", horarioProfesor);
         Profesor profesor2 = new Profesor("Principal", "uncódigo", "Suiberto Laguna", horarioProfesor);
-        Vector<Profesor> profesoresA = new Vector();
-        profesoresA.add(profesor1);
-        profesoresA.add(profesor2);
+        Profesor[] profesoresA = new Profesor[2];
+        profesoresA[0] = profesor1;
+        profesoresA[1] = profesor2;
         
-        Vector<Profesor> profesoresB = new Vector();
-        profesoresB.add(profesor2);
+        Profesor[] profesoresB = new Profesor[1];
+        profesoresB[0] = profesor2;
+        
+        Profesor[] profesoresGeneral = new Profesor[2];
                 
         Curso algoritmicaII = new Curso("202W0401", "Algorítmica II", 6, 4, profesoresA);
         Curso procesosSoftware = new Curso("202W0406", "Procesos de software", 4, 4, profesoresB);
         
-        Vector<Curso> cursos = new Vector();
-        cursos.add(algoritmicaII);
-        cursos.add(procesosSoftware);
+        algoritmicaII.addProfe(profesor1);
+        algoritmicaII.addProfe(profesor2);
+        procesosSoftware.addProfe(profesor1);
         
-        PlanCurricular plan2017 = new PlanCurricular("2017", cursos);
-        Vector<PlanCurricular> curriculaSoftware = new Vector();
-        curriculaSoftware.add(plan2017);
+        PlanCurricular plan2017 = new PlanCurricular("2017");
+        plan2017.addCurso(algoritmicaII);
+        plan2017.addCurso(procesosSoftware);
         
-        EscuelaProfesional EscuelaSoftware = new EscuelaProfesional("Ingeniería de Software", curriculaSoftware);
+        
+        EscuelaProfesional escuelaSoftware = new EscuelaProfesional("Ingeniería de Software");
+        escuelaSoftware.addMalla(plan2017);
 
         //PlanteoHorarioCurso horarioCurso = new PlanteoHorarioCurso();
         
@@ -75,10 +78,9 @@ public class ControladorPrincipal {
         ////////////////////////////////////////////
         
         PlanteoHorarioCurso test = new PlanteoHorarioCurso();
-        test.plantearHorarios(cursos);
-        var aux = test.getHorariosCursos().get(test.getHorariosCursos().keySet().iterator().next());
-        System.out.println();
-        vista.lblCurso.setText(test.getHorariosCursos().keySet().iterator().next().getNombreCurso());
+        test.plantearHorarios(plan2017.getCursos());
+        //var aux = test.getHorariosCursos().get(test.getHorariosCursos().keySet().iterator().next());
+//        vista.lblCurso.setText(test.getHorariosCursos().keySet().iterator().next().getNombreCurso());
         
         this.vista = vista;
     }

@@ -13,13 +13,40 @@ public class EscuelaProfesional {
         this.nombre = nombre;
     }
 
-    public boolean agregar(){
-        return false;
-         
-    }
-    public boolean eliminar(){
-        return false;
-         
+    public boolean addMalla(PlanCurricular e){
+       var aux = new PlanCurricular[this.mallas.length + 1];
+       System.arraycopy(this.mallas, 0, aux, 0, this.mallas.length);
+       aux[this.mallas.length] = e;
+       this.mallas = aux;
+       return true;
     }
     
+    public boolean exists(PlanCurricular e)
+    {
+        int len = this.mallas.length;
+        int i = 0;
+        
+        while (i < len) {
+            if (this.mallas[i] == e) {
+                return true;
+            }
+            else {
+                i = i + 1;
+            }
+        }
+        return false;
+    }
+    
+    public boolean removeMalla(PlanCurricular e)
+    {
+        var aux = new PlanCurricular[this.mallas.length - 1];
+        for (int i = 0, k = 0; i < this.mallas.length; i++) {
+            if (this.mallas[i] == e) {
+                continue;
+            }
+            aux[k++] = this.mallas[i];
+        }
+        this.mallas = aux;        
+        return true;
+    }    
 }

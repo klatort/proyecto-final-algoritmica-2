@@ -21,26 +21,27 @@ public class HorariosCurso {
        var aux = new HorarioGrupo[this.grupos.length + 1];
        System.arraycopy(this.grupos, 0, aux, 0, this.grupos.length);
        aux[this.grupos.length] = e;
+       this.grupos = aux;
        return true;
     }
     
-    public HorarioGrupo get(HorarioGrupo e)
+    public boolean existHorarioGrupo(HorarioGrupo e)
     {
         int len = this.grupos.length;
         int i = 0;
         
         while (i < len) {
             if (this.grupos[i] == e) {
-                return this.grupos[i];
+                return true;
             }
             else {
                 i = i + 1;
             }
         }
-        return null;
+        return false;
     }
     
-    public boolean removeTheElement(HorarioGrupo e)
+    public boolean removeHorarioGrupo(HorarioGrupo e)
     {
         var aux = new HorarioGrupo[this.grupos.length - 1];
         for (int i = 0, k = 0; i < this.grupos.length; i++) {
@@ -51,6 +52,14 @@ public class HorariosCurso {
         }
         this.grupos = aux;        
         return true;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public HorarioGrupo[] getGrupos() {
+        return grupos;
     }
  
 }

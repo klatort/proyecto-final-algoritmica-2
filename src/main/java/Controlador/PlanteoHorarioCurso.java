@@ -5,85 +5,65 @@
 package Controlador;
 
 import Modelo.*;
-import java.awt.List;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Vector;
 
 /**
  *
  * @author Usuario
  */
 public class PlanteoHorarioCurso {
-    private Map<Curso, Vector<HorarioGrupo>> horariosCursos;
+    private arregloHorariosCurso horariosCursos;
     
     public PlanteoHorarioCurso(){
-        this.horariosCursos = new HashMap<>();
+        this.horariosCursos = new arregloHorariosCurso();
     }
 
-    public Map<Curso, Vector<HorarioGrupo>> getHorariosCursos() {
+    public arregloHorariosCurso getHorariosCursos() {
         return this.horariosCursos;
     }
     
-    public boolean plantearHorarios(Vector<Curso> cursos){
-        Map<Profesor, Vector<Curso>> profesores = new HashMap<>();
-        Map<Integer, Vector<Curso>> cursosCiclo = new HashMap<>();
+    public boolean plantearHorarios(Curso[] cursos){
         
-        for(var i : cursos){
-            for(var j : i.getProfesDictan()){
-                profesores.computeIfAbsent(j, ignored -> new Vector());
+        Curso[][] cursosCiclo = new Curso[10][10];
+        for(int i = 0; i < 10; i++){
+            int index = 0;
+            for(var curso : cursos){
+                if(curso.getCicloLleva() == i + 1){
+                    cursosCiclo[i][index] = curso;
+                    index++;
+                }
             }
         }
         
-        for(var i : cursos){
-            for(var j : i.getProfesDictan()){
-                var aux = profesores.get(j);
-                aux.add(i);
-            }
-        }
-        
-        System.out.println(profesores);
-        float promedioProfesores = profesores.size() / cursos.size();
-        
-        for(var curso : cursos){
-            this.horariosCursos.computeIfAbsent(curso, ignored -> new Vector());
-        }
-        
-        for(int i = 1; i <= 10; i++){
-            cursosCiclo.computeIfAbsent(i, ignored -> new Vector());
-        }
-        for(var it : cursos){
-            var aux = cursosCiclo.get(it.getCicloLleva());
-            aux.add(it);
-        }
-        
-        Collections.sort(cursos, Comparator.comparing(e -> {
-            return e.getProfesDictan().length;
-        }));
+        this.sort(cursos, 0, cursos.length - 1);
         
         for(var curso : cursos){
             for(var profesor : curso.getProfesDictan()){
                 for(int cont = 0; cont < profesor.getDisponibilidad().length; cont++){
-                    var planteo = plantearHorarios(profesor, curso, cont);
+                    HorarioGrupo planteo = plantearHorarios(profesor, curso, cont);
                     if(planteo == null) break;
-                    var c = cursosCiclo.get(curso.getCicloLleva());
+                    var cursoCiclo = cursosCiclo[curso.getCicloLleva()];
                     boolean cruce = false;
-                    for(var it : c){
-                        var aux = horariosCursos.get(it);
-                        if(!aux.isEmpty()){
-                            for(var it2 : aux){
-                                cruce = it2.horario.chocaHorario(planteo.horario);
-                                if(cruce) { 
-                                    break;
-                                }
+                    for(var c : cursoCiclo){
+                        int index = this.horariosCursos.existHorariosCurso(c);
+                        if(c != curso && index > -1){
+                            var horarios = this.horariosCursos.getHorarioCurso(index).getGrupos();
+                            for(var horario : horarios){
+                                cruce = horario.horario.chocaHorario(planteo.horario);
                             }
                         }
                     }
                     if(!cruce){
                         profesor.setHorasFaltantes(profesor.getHorasFaltantes() - curso.getHorasCurso());
-                        horariosCursos.get(curso).add(planteo);
+                        profesor.removeDisponibilidad(cont);
+                        int index = this.horariosCursos.existHorariosCurso(curso);
+                        if(index > -1){
+                            this.horariosCursos.getHorarioCurso(index).addHorarioGrupo(planteo);
+                        }
+                        else{
+                            HorariosCurso aux = new HorariosCurso(curso);
+                            aux.addHorarioGrupo(planteo);
+                            this.horariosCursos.addHorariosCurso(aux);
+                        }
                         System.out.println("Curso: " + curso.getNombreCurso() + " Profesor: " + planteo.profesor + " Horario: " + planteo.horario.getDiaSemana() + " De: " +planteo.horario.getInicio() + " a " + planteo.horario.getFin() + ".");
                         break;
                     }
@@ -104,6 +84,51 @@ public class PlanteoHorarioCurso {
             return aux;
         }
         return null;
+    }    
+    
+    private void merge(Curso arr[], int l, int m, int r)
+    {
+        int n1 = m - l + 1;
+        int n2 = r - m;
+        Curso L[] = new Curso[n1];
+        Curso R[] = new Curso[n2];
+        for (int i = 0; i < n1; ++i)
+            L[i] = arr[l + i];
+        for (int j = 0; j < n2; ++j)
+            R[j] = arr[m + 1 + j];
+        int i = 0, j = 0;
+ 
+        int k = l;
+        while (i < n1 && j < n2) {
+            if (L[i].getProfesDictan().length <= R[j].getProfesDictan().length) {
+                arr[k] = L[i];
+                i++;
+            }
+            else {
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+        while (i < n1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
     }
     
+    private void sort(Curso arr[], int l, int r)
+    {
+        if (l < r) {
+            int m = l + (r - l) / 2;
+            sort(arr, l, m);
+            sort(arr, m + 1, r);
+            merge(arr, l, m, r);
+        }
+    }
 }
