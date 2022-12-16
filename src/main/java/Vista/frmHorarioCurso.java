@@ -9,12 +9,12 @@ import javax.swing.table.DefaultTableCellRenderer;
  *
  * @author Fabo
  */
-public class frmPrincipal extends javax.swing.JFrame {
+public class frmHorarioCurso extends javax.swing.JFrame {
 
     /**
      * Creates new form FramePrincipal
      */
-    public frmPrincipal() {
+    public frmHorarioCurso() {
         initComponents();
     }
 
@@ -32,12 +32,12 @@ public class frmPrincipal extends javax.swing.JFrame {
         tableHorario = new javax.swing.JTable();
         btnRegresar = new javax.swing.JButton();
         lblCurso = new javax.swing.JLabel();
-        panelMostrarCursos = new javax.swing.JPanel();
-        panelCarreraPlan = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         panelMostrarHorario.setEnabled(false);
+        panelMostrarHorario.setMinimumSize(new java.awt.Dimension(800, 600));
+        panelMostrarHorario.setPreferredSize(new java.awt.Dimension(800, 600));
 
         tableHorario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -114,7 +114,7 @@ public class frmPrincipal extends javax.swing.JFrame {
             .addGroup(panelMostrarHorarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelMostrarHorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelHorario, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+                    .addComponent(panelHorario, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
                     .addComponent(btnRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -124,29 +124,13 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(lblCurso)
                 .addGap(18, 18, 18)
-                .addComponent(panelHorario, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                .addComponent(panelHorario, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(btnRegresar)
                 .addGap(27, 27, 27))
         );
 
         getContentPane().add(panelMostrarHorario, java.awt.BorderLayout.CENTER);
-
-        panelMostrarCursos.setLayout(new java.awt.GridLayout(1, 0));
-        getContentPane().add(panelMostrarCursos, java.awt.BorderLayout.PAGE_START);
-
-        javax.swing.GroupLayout panelCarreraPlanLayout = new javax.swing.GroupLayout(panelCarreraPlan);
-        panelCarreraPlan.setLayout(panelCarreraPlanLayout);
-        panelCarreraPlanLayout.setHorizontalGroup(
-            panelCarreraPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 607, Short.MAX_VALUE)
-        );
-        panelCarreraPlanLayout.setVerticalGroup(
-            panelCarreraPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 432, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(panelCarreraPlan, java.awt.BorderLayout.PAGE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -172,30 +156,30 @@ public class frmPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmHorarioCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmHorarioCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmHorarioCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmHorarioCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmPrincipal().setVisible(true);
+                new frmHorarioCurso().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnRegresar;
     public javax.swing.JLabel lblCurso;
-    public javax.swing.JPanel panelCarreraPlan;
     public javax.swing.JScrollPane panelHorario;
-    private javax.swing.JPanel panelMostrarCursos;
     public javax.swing.JPanel panelMostrarHorario;
     public javax.swing.JTable tableHorario;
     // End of variables declaration//GEN-END:variables

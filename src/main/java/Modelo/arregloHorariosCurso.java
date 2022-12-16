@@ -53,7 +53,9 @@ public class arregloHorariosCurso {
     }
 
     public HorariosCurso getHorarioCurso(int index) {
-        return horariosCurso[index];
+        if(index > -1)
+            return horariosCurso[index];
+        return null;
     }
  
 }

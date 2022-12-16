@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controlador;
+package Modelo;
 
 import Modelo.*;
 
@@ -23,7 +23,6 @@ public class PlanteoHorarioCurso {
     }
     
     public boolean plantearHorarios(Curso[] cursos){
-        
         Curso[][] cursosCiclo = new Curso[10][10];
         for(int i = 0; i < 10; i++){
             int index = 0;
@@ -34,10 +33,11 @@ public class PlanteoHorarioCurso {
                 }
             }
         }
-        
         this.sort(cursos, 0, cursos.length - 1);
         
         for(var curso : cursos){
+            HorariosCurso aux = new HorariosCurso(curso);
+            this.horariosCursos.addHorariosCurso(aux);
             for(var profesor : curso.getProfesDictan()){
                 for(int cont = 0; cont < profesor.getDisponibilidad().length; cont++){
                     HorarioGrupo planteo = plantearHorarios(profesor, curso, cont);
@@ -61,9 +61,7 @@ public class PlanteoHorarioCurso {
                             this.horariosCursos.getHorarioCurso(index).addHorarioGrupo(planteo);
                         }
                         else{
-                            HorariosCurso aux = new HorariosCurso(curso);
                             aux.addHorarioGrupo(planteo);
-                            this.horariosCursos.addHorariosCurso(aux);
                         }
                         System.out.println("Curso: " + curso.getNombreCurso() + " Profesor: " + planteo.profesor + " Horario: " + planteo.horario.getDiaSemana() + " De: " +planteo.horario.getInicio() + " a " + planteo.horario.getFin() + ".");
                         break;
