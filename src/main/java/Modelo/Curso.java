@@ -15,7 +15,7 @@ public class Curso {
         return this.nombreCurso;
     }
 
-    public Curso(String codigo, String nombreCurso, int horasCurso, int cicloLleva, Profesor[] profesDictan) {
+    public Curso(String codigo, String nombreCurso, int horasCurso, int cicloLleva) {
         this.profesDictan = new Profesor[0];
         this.codigo = codigo;
         this.nombreCurso = nombreCurso;

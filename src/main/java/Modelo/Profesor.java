@@ -15,9 +15,17 @@ public class Profesor{
         this.disponibilidad = disponibilidad;
         this.cursosPreferencia = new String[0];
         this.tipoDocente = tipoDocente;
-        this.horasFaltantes = 6;
+        this.horasFaltantes = this.setHorasFaltantes();
     }
-
+    
+    private int setHorasFaltantes(){
+        int horas = 0;
+        for(var it : this.disponibilidad){
+            horas += it.getFin() - it.getInicio() + 1;
+        }
+        return horas;
+    }
+    
     public boolean addCurso(String e){
        var aux = new String[this.cursosPreferencia.length + 1];
        System.arraycopy(this.cursosPreferencia, 0, aux, 0, this.cursosPreferencia.length);

@@ -1,8 +1,6 @@
 
 package Modelo;
 
-import java.util.Vector;
-
 public class PlanCurricular {
     private Curso[] cursos;
     private String anio;
@@ -24,7 +22,7 @@ public class PlanCurricular {
        return true;
     }
     
-    public boolean exists(Curso e)
+    public boolean existsCurso(Curso e)
     {
         int len = this.cursos.length;
         int i = 0;

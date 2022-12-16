@@ -1,8 +1,6 @@
 
 package Modelo;
 
-import java.util.Vector;
-
 public class EscuelaProfesional {
     
     private PlanCurricular[] mallas;

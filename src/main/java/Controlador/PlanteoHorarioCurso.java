@@ -11,6 +11,7 @@ import Modelo.*;
  * @author Usuario
  */
 public class PlanteoHorarioCurso {
+    
     private arregloHorariosCurso horariosCursos;
     
     public PlanteoHorarioCurso(){
@@ -41,14 +42,14 @@ public class PlanteoHorarioCurso {
                 for(int cont = 0; cont < profesor.getDisponibilidad().length; cont++){
                     HorarioGrupo planteo = plantearHorarios(profesor, curso, cont);
                     if(planteo == null) break;
-                    var cursoCiclo = cursosCiclo[curso.getCicloLleva()];
+                    var cursoCiclo = cursosCiclo[curso.getCicloLleva() - 1];
                     boolean cruce = false;
                     for(var c : cursoCiclo){
                         int index = this.horariosCursos.existHorariosCurso(c);
                         if(c != curso && index > -1){
                             var horarios = this.horariosCursos.getHorarioCurso(index).getGrupos();
                             for(var horario : horarios){
-                                cruce = horario.horario.chocaHorario(planteo.horario);
+                                cruce = cruce || horario.horario.chocaHorario(planteo.horario);
                             }
                         }
                     }
