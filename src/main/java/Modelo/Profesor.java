@@ -1,21 +1,25 @@
 
 package Modelo;
 
-public class Profesor{
+import java.io.Serializable;
+
+public class Profesor implements Serializable {
     private String nombre;
     private String codigoInterno;
     private String tipoDocente;
+    private String tiempoTrabajo;
     private String[] cursosPreferencia;
     private int horasFaltantes;
     private Horario[] disponibilidad;
     
-    public Profesor(String tipoDocente, String codigoInterno, String nombre, Horario[] disponibilidad) {
+    public Profesor(String tipoDocente, String codigoInterno, String nombre, String tiempoTrabajo, Horario[] disponibilidad) {
         this.codigoInterno = codigoInterno;
         this.nombre = nombre;
         this.disponibilidad = disponibilidad;
         this.cursosPreferencia = new String[0];
         this.tipoDocente = tipoDocente;
         this.horasFaltantes = this.setHorasFaltantes();
+        this.tiempoTrabajo = tiempoTrabajo;
     }
     
     private int setHorasFaltantes(){

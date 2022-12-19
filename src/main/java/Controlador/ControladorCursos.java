@@ -40,8 +40,7 @@ public class ControladorCursos {
             constraints.gridy = i * 10;
             this.vista.panelCursos.add(aux,  constraints);
             int x = 0, y = i * 10 + 1;
-            for(int j = 0; j < cursos.length; j++){
-                final var curso = cursos[j];
+            for (Curso curso : cursos) {
                 if(curso != null && curso.getCicloLleva() == i + 1){
                     constraints.gridx = x;
                     constraints.gridy = y;
@@ -52,7 +51,7 @@ public class ControladorCursos {
                     });
                     btnCurso.setText(curso.getNombreCurso());
                     this.vista.panelCursos.add(btnCurso, constraints);
-                    if(x == 5){
+                    if(x == 4){
                         x = 0;
                         y += 1;
                     }else{

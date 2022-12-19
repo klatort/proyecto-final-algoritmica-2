@@ -1,9 +1,9 @@
 
 package Modelo;
 
-import java.util.Vector;
+import java.io.Serializable;
 
-public class Curso {
+public class Curso implements Serializable {
     private Profesor[] profesDictan;
     private String codigo;
     private String nombreCurso;

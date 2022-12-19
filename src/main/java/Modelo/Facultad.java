@@ -3,12 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Modelo;
+import java.io.*;
 
 /**
  *
  * @author Fabo
  */
-public class Facultad {
+public class Facultad implements Serializable {
     private EscuelaProfesional[] carreras;
     private String facultad;
     

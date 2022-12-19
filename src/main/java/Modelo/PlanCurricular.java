@@ -1,7 +1,9 @@
 
 package Modelo;
 
-public class PlanCurricular {
+import java.io.Serializable;
+
+public class PlanCurricular implements Serializable {
     private Curso[] cursos;
     private String anio;
 

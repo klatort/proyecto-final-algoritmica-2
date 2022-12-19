@@ -11,6 +11,13 @@
             <artifactId>Swing-Layout</artifactId>
             <version>1.0</version>
         </dependency>
+        <!-- DEPENDENCIA PARA PERSISTENCIA -->
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+            <version>1.0.0.Final</version>
+        </dependency>
+        <!-- DEPENDENCIA PARA PERSISTENCIA -->
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

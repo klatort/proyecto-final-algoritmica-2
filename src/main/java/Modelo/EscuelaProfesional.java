@@ -1,7 +1,9 @@
 
 package Modelo;
 
-public class EscuelaProfesional {
+import java.io.Serializable;
+
+public class EscuelaProfesional implements Serializable{
     
     private PlanCurricular[] mallas;
     private String nombre;
@@ -47,4 +49,8 @@ public class EscuelaProfesional {
         this.mallas = aux;        
         return true;
     }    
+
+    public PlanCurricular[] getMallas() {
+        return mallas;
+    }
 }

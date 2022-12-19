@@ -1,7 +1,9 @@
 
 package Modelo;
 
-public class Horario {
+import java.io.Serializable;
+
+public class Horario implements Serializable{
     private int inicio;
     private int fin;
     private String diaSemana;

@@ -4,8 +4,6 @@
  */
 package Modelo;
 
-import Modelo.*;
-
 /**
  *
  * @author Usuario
@@ -57,12 +55,7 @@ public class PlanteoHorarioCurso {
                         profesor.setHorasFaltantes(profesor.getHorasFaltantes() - curso.getHorasCurso());
                         profesor.removeDisponibilidad(cont);
                         int index = this.horariosCursos.existHorariosCurso(curso);
-                        if(index > -1){
-                            this.horariosCursos.getHorarioCurso(index).addHorarioGrupo(planteo);
-                        }
-                        else{
-                            aux.addHorarioGrupo(planteo);
-                        }
+                        aux.addHorarioGrupo(planteo);
                         System.out.println("Curso: " + curso.getNombreCurso() + " Profesor: " + planteo.profesor + " Horario: " + planteo.horario.getDiaSemana() + " De: " +planteo.horario.getInicio() + " a " + planteo.horario.getFin() + ".");
                         break;
                     }
