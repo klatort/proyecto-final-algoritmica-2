@@ -53,4 +53,9 @@ public class EscuelaProfesional implements Serializable{
     public PlanCurricular[] getMallas() {
         return mallas;
     }
+
+    @Override
+    public String toString() {
+        return this.nombre;
+    }
 }

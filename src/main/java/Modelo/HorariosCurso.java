@@ -4,11 +4,13 @@
  */
 package Modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Fabo
  */
-public class HorariosCurso {
+public class HorariosCurso implements Serializable {
     private Curso curso;
     private HorarioGrupo[] grupos;
 

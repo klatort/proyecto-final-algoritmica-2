@@ -55,10 +55,6 @@ public class PlanCurricular implements Serializable {
 
     @Override
     public String toString() {
-        String result = "";
-        for(var it : cursos){
-            result += it + " ";
-        }
-        return result;
+        return "Plan " + this.anio;
     }
 }

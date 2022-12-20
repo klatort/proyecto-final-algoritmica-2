@@ -29,7 +29,7 @@ public class ControladorHorarios {
         this.vista.tableHorario.getColumnModel().getColumn(0).setMaxWidth(50);
         
         for(int i = 0; i < 15; i++){
-            vista.tableHorario.getModel().setValueAt(Integer.toString(i + 8) + ":00", i, 0);
+            this.vista.tableHorario.getModel().setValueAt(Integer.toString(i + 8) + ":00", i, 0);
         }
         
         this.vista.btnRegresar.addActionListener((ActionEvent ev) -> {
@@ -60,7 +60,6 @@ public class ControladorHorarios {
                 }
             }
         }
-        this.vista = vista;
     }
     public void iniciar(){
         this.vista.setLocationRelativeTo(null);

@@ -6,6 +6,7 @@ package Controlador;
 
 import Modelo.PlanteoHorarioCurso;
 import Modelo.Curso;
+import Modelo.HorariosCurso;
 import Vista.frmCursos;
 import Vista.frmHorarioCurso;
 import controlador.ControladorHorarios;
@@ -13,20 +14,22 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 /**
  *
  * @author Fabo
  */
 public class ControladorCursos {
+    
     private frmCursos vista;
     private PlanteoHorarioCurso modelo;
     
-    public ControladorCursos(frmCursos vista, Curso[] cursos){
+    public ControladorCursos(frmCursos vista, Curso[] cursos, String file){
         this.vista = vista;
         this.modelo = new PlanteoHorarioCurso();        
 
-        this.modelo.plantearHorarios(cursos);
+        this.modelo.plantearHorarios(cursos, file);
         GridBagConstraints constraints = new GridBagConstraints( );
         constraints.insets = new Insets(5,5,5,5);
         constraints.weighty = 1;
@@ -37,17 +40,21 @@ public class ControladorCursos {
             aux.setText("Ciclo " + (i + 1));
             aux.setFont(new Font(aux.getName(), Font.PLAIN, 20));
             constraints.gridx = 0;
-            constraints.gridy = i * 10;
+            constraints.gridy = i * 3;
             this.vista.panelCursos.add(aux,  constraints);
-            int x = 0, y = i * 10 + 1;
+            int x = 0, y = i * 3 + 1;
             for (Curso curso : cursos) {
                 if(curso != null && curso.getCicloLleva() == i + 1){
                     constraints.gridx = x;
                     constraints.gridy = y;
                     var btnCurso = new JButton();
-                    btnCurso.addActionListener((ActionEvent ev) -> {            
-                        ControladorHorarios vistaCurso = new ControladorHorarios(new frmHorarioCurso(),this.modelo.getHorariosCursos().getHorarioCurso(this.modelo.getHorariosCursos().existHorariosCurso(curso)));
-                        vistaCurso.iniciar();
+                    btnCurso.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent ev) {
+                            HorariosCurso aux = ControladorCursos.this.modelo.getHorariosCursos().getHorarioCurso(ControladorCursos.this.modelo.getHorariosCursos().existHorariosCurso(curso));
+                            var vistaCurso = new ControladorHorarios(new frmHorarioCurso(), aux);
+                            vistaCurso.iniciar();
+                        }
                     });
                     btnCurso.setText(curso.getNombreCurso());
                     this.vista.panelCursos.add(btnCurso, constraints);
@@ -60,6 +67,9 @@ public class ControladorCursos {
                 }
             }
         }
+        this.vista.btnReportes.addActionListener((ActionEvent ev) ->{
+            
+        });
     }
     
     public void iniciar(){

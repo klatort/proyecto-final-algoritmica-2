@@ -4,6 +4,9 @@
  */
 package Modelo;
 
+import Libraries.Persistencia;
+import java.io.File;
+
 /**
  *
  * @author Usuario
@@ -20,7 +23,12 @@ public class PlanteoHorarioCurso {
         return this.horariosCursos;
     }
     
-    public boolean plantearHorarios(Curso[] cursos){
+    public boolean plantearHorarios(Curso[] cursos, String file){
+        File f = new File(file + ".txt");
+        if(f.exists()) {
+            this.horariosCursos = (arregloHorariosCurso)Persistencia.deserialize(file);
+            return true;
+        }
         Curso[][] cursosCiclo = new Curso[10][10];
         for(int i = 0; i < 10; i++){
             int index = 0;
@@ -53,7 +61,7 @@ public class PlanteoHorarioCurso {
                     }
                     if(!cruce){
                         profesor.setHorasFaltantes(profesor.getHorasFaltantes() - curso.getHorasCurso());
-                        profesor.removeDisponibilidad(cont);
+                        //profesor.removeDisponibilidad(cont);
                         int index = this.horariosCursos.existHorariosCurso(curso);
                         aux.addHorarioGrupo(planteo);
                         System.out.println("Curso: " + curso.getNombreCurso() + " Profesor: " + planteo.profesor + " Horario: " + planteo.horario.getDiaSemana() + " De: " +planteo.horario.getInicio() + " a " + planteo.horario.getFin() + ".");
@@ -62,6 +70,8 @@ public class PlanteoHorarioCurso {
                 }
             }
         }
+        
+        Persistencia.serialize(this.horariosCursos, file);
         
         return true;
     }

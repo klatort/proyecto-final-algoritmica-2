@@ -1,0 +1,19 @@
+Principal, 018686, Cortez Vásquez Augusto Parcemon, Completo
+Principal, 030228, Gonzales Suárez Juan Carlos, Medio
+Principal, 088005, La Serna Palomino Nora Bertha, Completo
+Principal, 037605, Leon Fernandez Cayo Victor, Medio
+Asociado, 011797, Cánepa Pérez Carlos Alberto, Completo
+Asociado, 098329, Luza Montero César, Medio
+Asociado, 051934, Pariona Quispe Jaime Ruben, Completo
+Asociado, 08803A, Romero Naupari Pablo Jesus, Medio
+Asociado, 0A0182, Ruiz Rivera María Elena, Completo
+Asociado, 09571E, Trujillo Trejo John Ledgard, Medio
+Asociado, 071552, Valverde Ayala Giovana Melva, Completo
+Asociado, 097543, Avendaño Quiroz Johnny Robert, Medio
+Asociado, 017779, Contreras Flores Walter Pedro, Completo
+Asociado, 09795E, Díaz Muñante Jorge Raul, Medio
+Asociado, 099589, Fermín Pérez Félix Armando, Completo
+Auxiliar, 0A4525, Menéndez Mueras Rosa, Medio
+Auxiliar, 089575, Salinas Azaña Gilberto Anibal, Completo
+Auxiliar, 0A0716, Sobero Rodríguez Fany Yexenia, Medio
+Auxiliar, 0A1609, Zavaleta Campos Jorge Luis, Completo

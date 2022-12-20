@@ -4,11 +4,13 @@
  */
 package Modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Fabo
  */
-public class arregloHorariosCurso {
+public class arregloHorariosCurso implements Serializable{
     private HorariosCurso[] horariosCurso;
 
     public arregloHorariosCurso() {
@@ -25,11 +27,14 @@ public class arregloHorariosCurso {
     
     public int existHorariosCurso(Curso e)
     {
+        if(e == null){
+            return -1;
+        }
         int len = this.horariosCurso.length;
         int i = 0;
         
         while (i < len) {
-            if (this.horariosCurso[i].getCurso() == e) {
+            if (this.horariosCurso[i].getCurso().toString().equals(e.toString())) {
                 return i;
             }
             else {

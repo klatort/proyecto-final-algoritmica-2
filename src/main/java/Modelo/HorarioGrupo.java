@@ -4,11 +4,13 @@
  */
 package Modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Fabo
  */
-public class HorarioGrupo {
+public class HorarioGrupo implements Serializable {
     public Horario horario;
     public String profesor;
 

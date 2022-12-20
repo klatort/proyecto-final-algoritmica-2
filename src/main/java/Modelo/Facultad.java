@@ -17,6 +17,12 @@ public class Facultad implements Serializable {
         this.facultad = nombre;
         this.carreras = new EscuelaProfesional[0];
     }
+
+    @Override
+    public String toString() {
+        return this.facultad;
+    }
+
     
     public boolean addCarrera(EscuelaProfesional e){
        var aux = new EscuelaProfesional[this.carreras.length + 1];
@@ -41,8 +47,12 @@ public class Facultad implements Serializable {
         }
         return false;
     }
+
+    public EscuelaProfesional[] getCarreras() {
+        return carreras;
+    }
     
-    public boolean removeMalla(EscuelaProfesional e)
+    public boolean removeCarrera(EscuelaProfesional e)
     {
         var aux = new EscuelaProfesional[this.carreras.length - 1];
         for (int i = 0, k = 0; i < this.carreras.length; i++) {

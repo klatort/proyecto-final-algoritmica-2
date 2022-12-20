@@ -1,20 +1,16 @@
 
 package Vista;
 
-import Controlador.ControladorCursos;
-import Modelo.Curso;
-import Modelo.EscuelaProfesional;
-import Modelo.Horario;
-import Modelo.PlanCurricular;
-import Modelo.Profesor;
+import Modelo.*;
 import Libraries.Persistencia;
+import Controlador.ControladorFacultades;
 
 public class App {
     
     public static void main(String[] args){
-        /*
+        
         //DATA TEMPORAL SE BORRARÁ CUANDO HAYA UNA BD//
-        Horario horario1 = new Horario(18, 21, "Viernes");
+        /*Horario horario1 = new Horario(18, 21, "Viernes");
         Horario horario2 = new Horario(14, 16, "Sábado");
         
         Horario[] horarioProfesor = new Horario[2];
@@ -55,12 +51,19 @@ public class App {
         plan2017.addCurso(procesosSoftwareII);
                 
         EscuelaProfesional escuelaSoftware = new EscuelaProfesional("Ingeniería de Software");
-        escuelaSoftware.addMalla(plan2017);*/
-        EscuelaProfesional escuelaSoftware = (EscuelaProfesional)Persistencia.deserialize("datos");
+        escuelaSoftware.addMalla(plan2017);
+        //EscuelaProfesional escuelaSoftware = (EscuelaProfesional)Persistencia.deserialize("datos");
+        Facultad[] UNMSM = new Facultad[2];
+        UNMSM[0] = new Facultad("FISI");
+        UNMSM[1] = new Facultad("FIEE");
+        UNMSM[0].addCarrera(escuelaSoftware);
+        UNMSM[1].addCarrera(escuelaSoftware);
+        Persistencia.serialize(UNMSM, "datos");*/
         
-        //Persistencia.serialize(escuelaSoftware, "datos");
-        
-        ControladorCursos vista = new ControladorCursos(new frmCursos(), escuelaSoftware.getMallas()[0].getCursos());
+        //ControladorCursos vista = new ControladorCursos(new frmCursos(), escuelaSoftware.getMallas()[0].getCursos());
+        //vista.iniciar();
+        Facultad[] UNMSM = (Facultad[])Persistencia.deserialize("datos");
+        ControladorFacultades vista = new ControladorFacultades(new frmFacultades(), UNMSM);
         vista.iniciar();
     }
 }
