@@ -9,6 +9,7 @@ import Modelo.Curso;
 import Modelo.HorariosCurso;
 import Vista.frmCursos;
 import Vista.frmHorarioCurso;
+import Vista.frmReportes;
 import controlador.ControladorHorarios;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -58,7 +59,7 @@ public class ControladorCursos {
                     });
                     btnCurso.setText(curso.getNombreCurso());
                     this.vista.panelCursos.add(btnCurso, constraints);
-                    if(x == 4){
+                    if(x == 3){
                         x = 0;
                         y += 1;
                     }else{
@@ -68,7 +69,8 @@ public class ControladorCursos {
             }
         }
         this.vista.btnReportes.addActionListener((ActionEvent ev) ->{
-            
+            var vistaReportes = new ControladorReporte(new frmReportes(), this.modelo);
+            vistaReportes.iniciar();
         });
     }
     

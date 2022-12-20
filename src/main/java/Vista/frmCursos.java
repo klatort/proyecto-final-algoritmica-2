@@ -37,6 +37,7 @@ public class frmCursos extends javax.swing.JFrame {
 
         panelCursos.setLayout(new java.awt.GridBagLayout());
 
+        btnReportes.setBackground(java.awt.Color.orange);
         btnReportes.setText("Reportes de profesores");
         btnReportes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -44,7 +45,7 @@ public class frmCursos extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 40;
         panelCursos.add(btnReportes, gridBagConstraints);
 

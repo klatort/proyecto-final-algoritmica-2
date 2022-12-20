@@ -8,6 +8,7 @@ public class Profesor implements Serializable {
     private String codigoInterno;
     private String tipoDocente;
     private String tiempoTrabajo;
+    private int horasLectivas;
     private String[] cursosPreferencia;
     private int horasFaltantes;
     private Horario[] disponibilidad;
@@ -18,16 +19,23 @@ public class Profesor implements Serializable {
         this.disponibilidad = disponibilidad;
         this.cursosPreferencia = new String[0];
         this.tipoDocente = tipoDocente;
-        this.horasFaltantes = this.setHorasFaltantes();
+        this.setHorasFaltantes();
         this.tiempoTrabajo = tiempoTrabajo;
+        this.horasLectivas = 0;
     }
     
-    private int setHorasFaltantes(){
+    private void setHorasFaltantes(){
         int horas = 0;
         for(var it : this.disponibilidad){
             horas += it.getFin() - it.getInicio() + 1;
         }
-        return horas;
+        if("Completo".equals(this.tiempoTrabajo) && this.horasLectivas <= 15 && this.horasLectivas >= 12){
+            this.horasFaltantes = 0;
+        }else if("Medio".equals(this.tiempoTrabajo) && this.horasLectivas <= 8 && this.horasLectivas >= 6){
+            this.horasFaltantes = 0;
+        }else{
+        this.horasFaltantes = horas;
+        }
     }
     
     public boolean addCurso(String e){
@@ -46,7 +54,9 @@ public class Profesor implements Serializable {
             }
             aux[k++] = this.disponibilidad[i];
         }
-        this.disponibilidad = aux;        
+        this.horasLectivas = this.disponibilidad[index].getFin() - this.disponibilidad[index].getInicio() + 1;
+        this.disponibilidad = aux;
+        this.setHorasFaltantes();
         return true;
     }
     
@@ -70,8 +80,11 @@ public class Profesor implements Serializable {
         return nombre;
     }
     
-    public void setHorasFaltantes(int horasFaltantes) {
-        this.horasFaltantes = horasFaltantes;
+    public int getHorasLectivasFaltantes(){
+        if("Completo".equals(this.tiempoTrabajo)){
+            return 12 - this.horasLectivas;
+        }
+        return 6 - this.horasLectivas;
     }
     
    public boolean estaDisponible(){

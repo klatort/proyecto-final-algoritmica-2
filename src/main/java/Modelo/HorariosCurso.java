@@ -27,6 +27,13 @@ public class HorariosCurso implements Serializable {
        return true;
     }
     
+    public boolean hasHorarios(){
+        if(this.grupos.length <= 0){
+            return false;
+        }
+        return true;
+    }
+    
     public boolean existHorarioGrupo(HorarioGrupo e)
     {
         int len = this.grupos.length;

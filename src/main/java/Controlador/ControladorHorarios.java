@@ -39,6 +39,7 @@ public class ControladorHorarios {
         ////////////////////////////////////////////
         
         this.vista.lblCurso.setText(grupos.getCurso().getNombreCurso());
+        int cont = 1;
         for(var it : grupos.getGrupos()){
             int aux;
             switch(it.horario.getDiaSemana()){
@@ -54,11 +55,12 @@ public class ControladorHorarios {
             for(int i = it.horario.getInicio() - 8; i < it.horario.getFin() - 7; i++){
                 var result = vista.tableHorario.getModel().getValueAt(i, aux);
                 if(result == null){
-                    vista.tableHorario.setValueAt(it.profesor, i, aux);                    
+                    vista.tableHorario.setValueAt(it.profesor + " Grupo " + cont, i, aux);                    
                 }else{
-                    vista.tableHorario.setValueAt(result + " - " + it.profesor, i, aux);                     
+                    vista.tableHorario.setValueAt(result + " - " + it.profesor + " Grupo " + cont, i, aux);                     
                 }
             }
+            cont++;
         }
     }
     public void iniciar(){

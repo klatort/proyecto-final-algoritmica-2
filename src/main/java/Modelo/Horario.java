@@ -29,5 +29,10 @@ public class Horario implements Serializable{
     public boolean chocaHorario(Horario horario){
         return !(horario.getInicio() > this.fin) && horario.getFin() > this.inicio && this.diaSemana.equals(horario.diaSemana);
     }
+
+    @Override
+    public String toString() {
+        return "Horario{" + "inicio=" + inicio + ", fin=" + fin + ", diaSemana=" + diaSemana + '}';
+    }
     
 }

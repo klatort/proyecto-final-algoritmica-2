@@ -12,9 +12,11 @@ import java.io.Serializable;
  */
 public class arregloHorariosCurso implements Serializable{
     private HorariosCurso[] horariosCurso;
+    public int length;
 
     public arregloHorariosCurso() {
         this.horariosCurso = new HorariosCurso[0];
+        this.length = 0;
     }
     
     public boolean addHorariosCurso(HorariosCurso e){
@@ -22,6 +24,7 @@ public class arregloHorariosCurso implements Serializable{
        System.arraycopy(this.horariosCurso, 0, aux, 0, this.horariosCurso.length);
        aux[this.horariosCurso.length] = e;
        this.horariosCurso = aux;
+       this.length++;
        return true;
     }
     
@@ -53,7 +56,8 @@ public class arregloHorariosCurso implements Serializable{
             }
             aux[k++] = this.horariosCurso[i];
         }
-        this.horariosCurso = aux;        
+        this.horariosCurso = aux;
+        this.length--;
         return true;
     }
 

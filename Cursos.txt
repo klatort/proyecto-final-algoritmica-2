@@ -1,0 +1,46 @@
+INE002, Programación Y Computación, 3, 1
+INO101, Redacción Y Técnicas De Comunicación Efectiva I, 4, 1
+INO104, Cálculo I, 5, 1
+INO106, Álgebra Y Geometría Analítica, 6, 1
+INO201, Redacción Y Técnicas De Comunicación Efectiva II, 4, 2
+INO202, Investigación Formativa, 5, 2
+INO204, Cálculo II, 6, 2
+INO205, Física I, 4, 2
+202W0301, Algorítmica I, 5, 3
+202W0302, Estadística, 4, 3
+202W0305, Introducción al Desarrollo de Software, 4, 3
+202W0303, Física Electrónica, 5, 3
+202W0401, Algorítmica II, 5, 4
+202W0404, Matemática Discreta, 4, 4
+202W0407, Sistemas digitales, 4, 4
+202W0406, Procesos De Software, 4, 4
+202W0501, Análisis Y Diseño De Algoritmos , 5, 5
+202W0502, Arquitectura De Computadoras, 4, 5
+202W0503, Calidad De Software, 3, 5
+202W0507, Ingeniería De Requisitos, 5, 5
+202W0505, Estructura De Datos, 4, 5
+202W0602, Base de Datos I, 5, 6
+202W0603, Diseño de Software, 6, 6
+202W0605, Gestión De La Configuración Del Software, 4, 6
+202W0607, Sistemas Operativos, 5, 6
+202W0601, Aseguramiento De La Calidad Del Software, 3, 6
+202W0701, Arquitectura De Software, 6, 7
+202W0702, Base De Datos II, 5, 7
+202W0704, Gestión De Proyecto De Software, 4, 7
+202W0705, Inteligencia Artificial, 5, 7
+202W0707, Redes Y Transmisión De Datos, 4, 7
+202W0801, Automatización Y Control De Software, 3, 8
+202W0808, Verificación y Validación de software, 4, 8
+202W0804, Minería De Datos, 5, 8
+202W0806, Seguridad Del Software, 4, 8
+202W0807, Taller De Construcción De Software Web, 3, 8
+202W0901, Desarrollo De Tesis I, 6, 9
+202W0902, Garantía De Software, 5, 9
+202W0905, Gestión De Riesgo Del Software, 3, 9
+202W0907, Taller De Construcción De Software Móvil, 4, 9
+202W0908, Software Inteligente, 5, 9
+202W1001, Analítica De Datos, 5, 10
+202W1002, Desarrollo De Tesis II, 6, 10
+202W1003, Práctica Pre Profesional, 4, 10
+202W1005, Tendencias De Arquitectura De Software, 6, 10
+202W1004, Taller De Aplicaciones Sociales, 3, 10

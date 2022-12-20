@@ -23,6 +23,53 @@ public class PlanteoHorarioCurso {
         return this.horariosCursos;
     }
     
+    private boolean estaProfesor(Profesor[] profes, Profesor p){
+        for(var profe : profes){
+            if(profe == p){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public Profesor[] getCursosProfesorSinCargaCompleta(){
+        int size = this.horariosCursos.length;
+        Profesor[] profes = new Profesor[20];
+        int cursor = 0;
+        for(int i = 0; i < size; i++){
+            var aux = this.horariosCursos.getHorarioCurso(i).getCurso().getProfesDictan();
+            for(var p : aux){
+                if(p.estaDisponible() && !estaProfesor(profes, p)){
+                    profes[cursor] = p;
+                    cursor++;
+                }
+            }
+        }
+        Profesor[] result = new Profesor[cursor];
+        for(int i = 0; i < cursor; i++){
+            result[i] = profes[i];
+        }
+        return result;
+    }
+    
+    public Curso[] getCursosSinProfesor(){
+        int size = this.horariosCursos.length;
+        Curso[] cursos = new Curso[size];
+        int cursor = 0;
+        for(int i = 0; i < size; i++){
+            var aux = this.horariosCursos.getHorarioCurso(i);
+            if(!aux.hasHorarios()){
+                cursos[cursor] = aux.getCurso();
+                cursor++;
+            }
+        }
+        Curso[] result = new Curso[cursor];
+        for(int i = 0; i < cursor; i++){
+            result[i] = cursos[i];
+        }
+        return result;
+    }
+    
     public boolean plantearHorarios(Curso[] cursos, String file){
         File f = new File(file + ".txt");
         if(f.exists()) {
@@ -60,9 +107,7 @@ public class PlanteoHorarioCurso {
                         }
                     }
                     if(!cruce){
-                        profesor.setHorasFaltantes(profesor.getHorasFaltantes() - curso.getHorasCurso());
-                        //profesor.removeDisponibilidad(cont);
-                        int index = this.horariosCursos.existHorariosCurso(curso);
+                        profesor.removeDisponibilidad(cont);
                         aux.addHorarioGrupo(planteo);
                         System.out.println("Curso: " + curso.getNombreCurso() + " Profesor: " + planteo.profesor + " Horario: " + planteo.horario.getDiaSemana() + " De: " +planteo.horario.getInicio() + " a " + planteo.horario.getFin() + ".");
                         break;

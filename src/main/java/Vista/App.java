@@ -4,67 +4,107 @@ package Vista;
 import Modelo.*;
 import Libraries.Persistencia;
 import Controlador.ControladorFacultades;
+import java.io.FileNotFoundException;
+import java.io.IOException;/*
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.Vector;*/
 
 public class App {
+    /*
+    public static Horario generarHorario(){
+        int inicio = (int) (Math.random() * 12 + 8);
+        int fin = inicio + (int) (Math.random() * 4 + 3);
+        String diaSemana;
+        int r = (int) (Math.random() * 7);
+        switch(r){
+            case 0 -> diaSemana = "Lunes";
+            case 1 -> diaSemana = "Martes";
+            case 2 -> diaSemana = "Miércoles";
+            case 3 -> diaSemana = "Jueves";
+            case 4 -> diaSemana = "Viernes";
+            case 5 -> diaSemana = "Sábado";
+            case 6 -> diaSemana = "Domingo";
+            default -> diaSemana = "Lunes";
+        }
+        return new Horario(inicio, fin, diaSemana);
+    }
     
-    public static void main(String[] args){
-        
+    public static boolean verificarProfes(Profesor[] profes, Profesor profe){
+        for(int i = 0; i < profes.length; i++){
+            if(profes[i] == profe){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public static boolean verificarChoque(Horario[] horarios, int index){
+        for(int i = 0; i < 5; i++){
+            if(horarios[i] != null && i != index){
+                if(horarios[i].chocaHorario(horarios[index])){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }*/
+    
+    public static void main(String[] args) throws FileNotFoundException, IOException{
+
+        /*
         //DATA TEMPORAL SE BORRARÁ CUANDO HAYA UNA BD//
-        /*Horario horario1 = new Horario(18, 21, "Viernes");
-        Horario horario2 = new Horario(14, 16, "Sábado");
         
-        Horario[] horarioProfesor = new Horario[2];
-        horarioProfesor[0] = horario1;
-        horarioProfesor[1] = horario2;
-        System.out.println(horarioProfesor.length);
+        File file1 = new File("Profesores.txt");
+        BufferedReader br1 = new BufferedReader(new FileReader(file1));
+        String st1;
+        Vector<Profesor> vec = new Vector<Profesor>();
+        while ((st1 = br1.readLine()) != null){
+            String[] result = st1.split(", ");
+            Horario[] horarios = new Horario[5];
+            for(int i = 0; i < 5; i++){
+                do{
+                    horarios[i] = generarHorario();
+                }while(verificarChoque(horarios, i));
+            }
+            vec.add(new Profesor(result[0], result[1], result[2], result[3], horarios));
+        }
         
-        Profesor profesor1 = new Profesor("Auxiliar", "uncódigo", "Chumacero Calle", "medio", horarioProfesor);
-        Profesor profesor2 = new Profesor("Principal", "uncódigo", "Suiberto Laguna", "completo", horarioProfesor);
-           
-        Curso algoritmicaI = new Curso("202W0400", "Algorítmica I", 3, 1);
-        Curso procesosSoftware0 = new Curso("202W0405", "Procesos de software 0", 4, 1);
-        
-        Curso algoritmicaII = new Curso("202W0401", "Algorítmica II", 3, 4);
-        Curso procesosSoftware = new Curso("202W0406", "Procesos de software", 4, 4);
-        
-        Curso algoritmicaIII = new Curso("202W0402", "Algorítmica III", 3, 5);
-        Curso procesosSoftwareII = new Curso("202W0407", "Procesos de software II", 4, 5);
-        
-        algoritmicaI.addProfe(profesor1);
-        procesosSoftware0.addProfe(profesor2);
-        
-        algoritmicaII.addProfe(profesor1);
-        algoritmicaII.addProfe(profesor2);
-        procesosSoftware.addProfe(profesor1);
-        
-        algoritmicaIII.addProfe(profesor2);
-        procesosSoftwareII.addProfe(profesor1);
-        
-        PlanCurricular plan2017 = new PlanCurricular("2017");
-        plan2017.addCurso(algoritmicaI);
-        plan2017.addCurso(procesosSoftware0);
-        
-        plan2017.addCurso(algoritmicaII);
-        plan2017.addCurso(algoritmicaIII);
-        
-        plan2017.addCurso(procesosSoftware);
-        plan2017.addCurso(procesosSoftwareII);
-                
+        PlanCurricular plan2018 = new PlanCurricular("2018");
         EscuelaProfesional escuelaSoftware = new EscuelaProfesional("Ingeniería de Software");
-        escuelaSoftware.addMalla(plan2017);
-        //EscuelaProfesional escuelaSoftware = (EscuelaProfesional)Persistencia.deserialize("datos");
-        Facultad[] UNMSM = new Facultad[2];
-        UNMSM[0] = new Facultad("FISI");
-        UNMSM[1] = new Facultad("FIEE");
-        UNMSM[0].addCarrera(escuelaSoftware);
-        UNMSM[1].addCarrera(escuelaSoftware);
-        Persistencia.serialize(UNMSM, "datos");*/
+        escuelaSoftware.addMalla(plan2018);
+        Facultad FISI = new Facultad("FISI");
+        FISI.addCarrera(escuelaSoftware);
         
-        //ControladorCursos vista = new ControladorCursos(new frmCursos(), escuelaSoftware.getMallas()[0].getCursos());
-        //vista.iniciar();
+        File file = new File("Cursos.txt");
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String st;
+        for(var pro : vec){
+            System.out.println(pro);
+        }
+        while ((st = br.readLine()) != null){
+            String[] result = st.split(", ");
+            Curso aux = new Curso(result[0], result[1], Integer.parseInt(result[2]), Integer.parseInt(result[3]));
+            int r = (int) (Math.random() * 6 + 1);
+            for(int i = 0; i < r; i++){
+                Profesor p = null;
+                do{
+                    p = vec.elementAt((int) (Math.random() * vec.size()));                    
+                }while(verificarProfes(aux.getProfesDictan(), p));
+                aux.addProfe(p);
+            }
+            plan2018.addCurso(aux);
+            
+        }
+        
+        
+        Facultad[] UNMSM = new Facultad[1];
+        UNMSM[0] = FISI;
+        Persistencia.serialize(UNMSM, "datos");*/
+
         Facultad[] UNMSM = (Facultad[])Persistencia.deserialize("datos");
         ControladorFacultades vista = new ControladorFacultades(new frmFacultades(), UNMSM);
         vista.iniciar();
     }
 }
-        

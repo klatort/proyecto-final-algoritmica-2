@@ -4,6 +4,7 @@
  */
 package Controlador;
 
+import Libraries.Persistencia;
 import Modelo.Facultad;
 import Modelo.EscuelaProfesional;
 import Modelo.PlanCurricular;
@@ -33,6 +34,8 @@ public class ControladorFacultades implements ItemListener {
         this.vista.boxPlan.setModel(new DefaultComboBoxModel());
         
         this.vista.btnIngresar.addActionListener((ActionEvent ev) -> {            
+            
+            Facultad[] UNMSM = (Facultad[])Persistencia.deserialize("datos");
             PlanCurricular aux = (PlanCurricular)this.vista.boxPlan.getSelectedItem();
             ControladorCursos vistaCursos = new ControladorCursos(new frmCursos(), aux.getCursos(), this.vista.boxFacultad.getSelectedItem().toString() + this.vista.boxEscuela.getSelectedItem().toString() + this.vista.boxPlan.getSelectedItem().toString());
             vistaCursos.iniciar();
@@ -41,7 +44,6 @@ public class ControladorFacultades implements ItemListener {
     
     @Override
     public void itemStateChanged(ItemEvent e) {
-        System.out.println(e.getSource());
         if (e.getSource()==this.vista.boxFacultad) {
             Facultad aux = (Facultad) this.vista.boxFacultad.getSelectedItem();
             this.vista.boxEscuela.removeItemListener(this);
